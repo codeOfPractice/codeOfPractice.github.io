@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Hank Quinlan, Horrible Cop, Launches Site"
+title: "change of title yo"
 date: 2014-04-30
 ---
 
