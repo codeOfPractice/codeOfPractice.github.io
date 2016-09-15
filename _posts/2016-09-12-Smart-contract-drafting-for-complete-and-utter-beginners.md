@@ -1,10 +1,11 @@
 ---
 layout: post
-title: "Smart contract drafting for complete and utter beginners"
+title: "A beginners guide to smart-contract drafting for lawyers"
 date: 2016-09-12
+author: Ari Dyball
 ---
 
-So you have heard of the term "smart-contract", probably in the same sentence as "blockchain", "Bitcoin" or "Ethereum". You may have read some articles stating that smart-contracts will revolutionise our legal framework, put lawyers out of work, give lawyers more work to do or create some kind of libertarian-anarcho-capitalist wonderland. Alternatively, you may have read how smart-contracts are insecure, inefficient and completely useless.
+You may have heard of the term **"smart-contract"**, possibly in the same sentence as **"blockchain"**, **"Bitcoin"** or **"Ethereum"**. You may have read some articles stating that smart-contracts will [revolutionise our legal framework](http://www.afr.com/technology/blockchain-smart-contracts-to-disrupt-lawyers-20160529-gp6f5e), [put lawyers out of work](http://qz.com/459009/the-technology-behind-bitcoin-could-replace-lawyers-too/), give [lawyers more work](http://www.afr.com/technology/king--wood-mallesons-devises-a-smart-contract-which-keeps-lawyers-in-a-job-20160712-gq3wyl), or create some kind of libertarian-anarcho-capitalist wonderland. Alternatively, you may have read how smart-contracts are insecure, inefficient and completely useless.
 
 Smart-contracts are nothing new. A smart-contract is really just some computer code that plays a role in a transaction, this role may be to facilitate some element of the transaction to lower transaction costs, or it could be to make the contractual terms self-enforceable or self-executable, or something else entirely.
 
