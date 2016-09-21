@@ -13,8 +13,8 @@ exclude:
   - "/vendor/"
 
 # Site settings
-title:
-subtitle:
+title: codeOfPractice
+subtitle: Legal Technology Blog
 email: adyball@swin.edu.au
 description: >
   A simple yet classy theme for your Jekyll website or blog.
