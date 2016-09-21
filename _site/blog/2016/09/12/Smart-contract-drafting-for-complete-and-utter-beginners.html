@@ -43,7 +43,7 @@
   <!-- Facebook OGP cards -->
   <meta property="og:description" content="Disclaimer: this post is designed to help people familarise themselves with the concepts of coding smart-contracts on a blockchain. It is intended that the c..." />
   <meta property="og:url" content="http://codeofpractice.github.io" />
-  <meta property="og:site_name" content="" />
+  <meta property="og:site_name" content="codeOfPractice" />
   <meta property="og:title" content="A beginners guide to smart-contract drafting for lawyers" />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="http://codeofpractice.github.io/assets/logo.png" />
@@ -66,7 +66,7 @@
   <!-- Site styles -->
   <link rel="stylesheet" href="/css/main.css">
   <link rel="canonical" href="http://codeofpractice.github.io/blog/2016/09/12/Smart-contract-drafting-for-complete-and-utter-beginners">
-  <link rel="alternate" type="application/rss+xml" title="" href="http://codeofpractice.github.io/feed.xml" />
+  <link rel="alternate" type="application/rss+xml" title="codeOfPractice" href="http://codeofpractice.github.io/feed.xml" />
 </head>
 
 
@@ -76,7 +76,7 @@
   <div class="navigation-wrapper">
     <a href="/" class="logo">
       
-      <img src="/assets/logo.png" alt="">
+      <img src="/assets/logo.png" alt="codeOfPractice">
       
     </a>
     <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">
@@ -138,7 +138,7 @@
 
 <hr />
 
-<p>You may have heard of the term <strong>“smart-contract”</strong>. Possibly it was in the same sentence as <strong>“blockchain”</strong>, <strong>“Bitcoin”</strong> or <strong>“Ethereum”</strong>. You may have read some articles stating that smart-contracts will <a href="http://www.afr.com/technology/blockchain-smart-contracts-to-disrupt-lawyers-20160529-gp6f5e">revolutionise our legal framework</a>, <a href="http://qz.com/459009/the-technology-behind-bitcoin-could-replace-lawyers-too/">put lawyers out of work</a>, give <a href="http://www.afr.com/technology/king--wood-mallesons-devises-a-smart-contract-which-keeps-lawyers-in-a-job-20160712-gq3wyl">lawyers more work</a>, or create some kind of libertarian-anarcho-capitalist <a href="https://bitnation.co/">wonderland</a>. Alternatively, you may have read how smart-contracts are <a href="https://blog.blockstack.org/solar-storm-a-serious-security-exploit-with-ethereum-not-just-the-dao-a03d797d98fa#.yoh9mxujc">insecure</a>, <a href="https://forum.ethereum.org/discussion/4942/high-gas-price-is-killing-some-projects-seriously">inefficient</a> and completely <a href="http://www.coindesk.com/three-smart-contract-misconceptions/">useless</a>.</p>
+<p>You may have heard of the term <strong>“smart-contract”</strong>. Possibly it was in the same sentence as <strong>“blockchain”</strong>, <strong>“Bitcoin”</strong> or <strong>“Ethereum”</strong>. You may have read some articles stating that smart-contracts will <a href="http://www.afr.com/technology/blockchain-smart-contracts-to-disrupt-lawyers-20160529-gp6f5e">revolutionise our legal framework</a>, <a href="http://qz.com/459009/the-technology-behind-bitcoin-could-replace-lawyers-too/">put lawyers out of work</a>, give lawyers <a href="http://www.kwm.com/en/au/knowledge/insights/smart-contracts-open-source-model-dna-digital-analogue-human-20160630">more</a> <a href="http://www.afr.com/technology/king--wood-mallesons-devises-a-smart-contract-which-keeps-lawyers-in-a-job-20160712-gq3wyl">work</a>, or create some kind of libertarian-anarcho-capitalist <a href="https://bitnation.co/">wonderland</a>. Alternatively, you may have read how smart-contracts are <a href="https://blog.blockstack.org/solar-storm-a-serious-security-exploit-with-ethereum-not-just-the-dao-a03d797d98fa#.yoh9mxujc">insecure</a>, <a href="https://forum.ethereum.org/discussion/4942/high-gas-price-is-killing-some-projects-seriously">inefficient</a> and completely <a href="http://www.coindesk.com/three-smart-contract-misconceptions/">useless</a>.</p>
 
 <p>Smart-contracts are nothing new. A smart-contract is really just some computer code that plays a role in a transaction, this role may be to facilitate some element of the transaction to lower transaction costs, or it could be to make the contractual terms self-enforceable or self-executable, or something else entirely.</p>
 
@@ -204,6 +204,7 @@
 <p>The smart-contract we are going to code will follow the above decentralised schema, the contract that we will be writing was developed as a protocol for Ethereum trustless sales by the github user and solidity program language developer <a href="https://github.com/chriseth">chriseth</a>. You can find the github entry, including a discussion on limitations and possible additions that can/should be made to it <a href="https://gist.github.com/chriseth/b16e8e76a423b7671e99">here</a>.</p>
 
 <p>Transaction structure:</p>
+
 <ul>
   <li>The seller will “create” the contract on the Ethereum blockchain and put <strong>double</strong> the sale price into the contract.</li>
   <li>The buyer will then purchase the item by also putting <strong>double</strong> the sale price into the contract.</li>
@@ -431,9 +432,11 @@
 
 <p><img src="/assets/enummodifier.png" alt="enummodifier" /></p>
 
-<p>Now at the top of each function we run our inState() modifier, and we specify what state the contract must be in to allow the function to run. So, as <strong>abort()</strong> should only be run when the contract is in <strong>State.Created</strong>, we write, <strong>inState(State.Created)</strong>, and this will go just below the onlySeller modifier we inserted earlier (what is important is that it is in the space between the “function” line and the opening curly bracket).</p>
+<p>Now at the top of each function we run our <strong>inState()</strong> modifier, and we specify what state the contract must be in to allow the function to run. So, as <strong>abort()</strong> should only be run when the contract is in <strong>State.Created</strong>, we write, <strong>inState(State.Created)</strong>, and this will go just below the onlySeller modifier we inserted earlier (what is important is that it is in the space between the “function” line and the opening curly bracket).</p>
 
 <p><img src="/assets/enumgate.png" alt="enumgate" /></p>
+
+<p>Now do the same for the other functions:</p>
 
 <ol>
   <li><strong>abort()</strong> and <strong>confirmPurchase()</strong> : <strong>inState(State.Created)</strong></li>
@@ -541,7 +544,7 @@
     
     
     
-      <a href="//www.pinterest.com/pin/create/button/?description=A+beginners+guide+to+smart-contract+drafting+for+lawyers&url=http://codeofpractice.github.io/blog/2016/09/12/Smart-contract-drafting-for-complete-and-utter-beginners&media=http://codeofpractice.github.io/assets/header_image.jpg"
+      <a href="//www.pinterest.com/pin/create/button/?description=A+beginners+guide+to+smart-contract+drafting+for+lawyers&url=http://codeofpractice.github.io/blog/2016/09/12/Smart-contract-drafting-for-complete-and-utter-beginners&media=http://codeofpractice.github.io/assets/header_image.png"
         onclick="window.open(this.href, 'pinterest-share', 'width=550,height=255');return false;">
         <i class="fa fa-pinterest-square fa-lg"></i>
       </a>
@@ -622,7 +625,7 @@
 
   <div class="wrapper">
 
-    <h3 class="footer-heading"></h3>
+    <h3 class="footer-heading">codeOfPractice</h3>
 
     <div class="site-navigation">
       
