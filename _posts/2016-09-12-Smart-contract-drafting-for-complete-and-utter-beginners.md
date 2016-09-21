@@ -295,9 +295,11 @@ So, now we need to make a modifier that sits in a function that will check to se
 
 ![enummodifier](/assets/enummodifier.png)
 
-Now at the top of each function we run our inState() modifier, and we specify what state the contract must be in to allow the function to run. So, as **abort()** should only be run when the contract is in **State.Created**, we write, **inState(State.Created)**, and this will go just below the onlySeller modifier we inserted earlier (what is important is that it is in the space between the "function" line and the opening curly bracket).
+Now at the top of each function we run our **inState()** modifier, and we specify what state the contract must be in to allow the function to run. So, as **abort()** should only be run when the contract is in **State.Created**, we write, **inState(State.Created)**, and this will go just below the onlySeller modifier we inserted earlier (what is important is that it is in the space between the "function" line and the opening curly bracket).
 
 ![enumgate](/assets/enumgate.png)
+
+Now do the same for the other functions:
 
 1. **abort()** and **confirmPurchase()** : **inState(State.Created)**
 2. **confirmReceived()** and **refund()** : **inState(State.Locked)**
