@@ -75,6 +75,7 @@ _Note: following some discussions that I have had with economists this transacti
 The smart-contract we are going to code will follow the above decentralised schema, the contract that we will be writing was developed as a protocol for Ethereum trustless sales by the github user and solidity program language developer [chriseth](https://github.com/chriseth). You can find the github entry, including a discussion on limitations and possible additions that can/should be made to it [here](https://gist.github.com/chriseth/b16e8e76a423b7671e99).
 
 Transaction structure:
+
 * The seller will "create" the contract on the Ethereum blockchain and put **double** the sale price into the contract.
 * The buyer will then purchase the item by also putting **double** the sale price into the contract.
 * At this stage we have _four_ times the sale price in the contract.
