@@ -2,7 +2,7 @@
 layout: post
 title: "A beginners guide to smart-contract drafting for lawyers"
 date: 2016-09-12
-author: Ari Dyball
+author: Ari Dyball - Legal Technologist | Swinburne Law School
 ---
 ***
 _**Disclaimer**: this post is designed to help people familarise themselves with the concepts of coding smart-contracts on a blockchain. It is intended that the code used in this blog is for demonstration purposes and is to be used on the Ethereum "TEST-NET" only, and not on the actual Ethereum blockchain. I do not make any assurances that this code, or the solidity programming language, is safe to use with digital currency that has an actual monetary value_
