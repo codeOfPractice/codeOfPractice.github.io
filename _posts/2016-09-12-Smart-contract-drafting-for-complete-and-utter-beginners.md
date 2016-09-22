@@ -25,7 +25,7 @@ In one sense, your starting point for a smart contract is a computer system to w
 
 This trust issue was insurmountable until the [**Bitcoin**](https://bitcoin.org/bitcoin.pdf) blockchain was established in 2007. The Bitcoin network has been the [proving ground](http://www.coindesk.com/bitcoin-venture-capital/) for blockchain technology. Although you may have heard of some high-profile [hacks](http://satoshilabs.com/news/bitcoin-thefts/) of entities that trade bitcoin, the fundamental integrity of the network itself remains sound, with very large Bitcoin transaction processing operations ("miners") springing up as a new industry. For our purposes here, we only need to say that the blockchain is a computer system that everyone can trust because it does not reside under any specific person or entity's control, rather, its integrity is maintained by a large (or "distributed") network that is practically impossible to corrupt. This has greatly increased the potential range of applications for smart-contracts, and created a possibility that blockchain-based smart-contracts may grow into a major means of carrying out financial [transactions](https://www.ecb.europa.eu/pub/pdf/scpops/ecbop172.en.pdf).
 
-Blockchain technology was pushed exactly in this direction with the release of the [Ethereum](https://github.com/ethereum/wiki/wiki/White-Paper) blockchain in mid-2015. Ethereum adds to the blockchain concept by allowing pieces of code to exist on the blockchain. Bitcoin uses two elements accounts and their balances - this enables amounts of Bitcoin to be moved between accounts. The Ethereum blockchain has roughly the same elements as Bitcoin, accounts and balances, but it also adds another dimension by allowing pieces of code (or "contracts") to exist on the chain and hold value. In this way, smart-contracts can regulate and impose conditions on transactions.
+Blockchain technology was pushed exactly in this direction with the release of the [Ethereum](https://github.com/ethereum/wiki/wiki/White-Paper) blockchain in mid-2015. Ethereum adds to the blockchain concept by allowing pieces of code to exist on the blockchain. Bitcoin uses two elements: "accounts" and their "balances" - this enables amounts of Bitcoin to be moved between accounts. The Ethereum blockchain has roughly the same elements as Bitcoin, accounts and balances, but it also adds another dimension by allowing pieces of code (or "contracts") to exist on the chain and hold value. In this way, smart-contracts can regulate and impose conditions on transactions - for example, the smart-contract we will be making here can be seen as the transfer of an amount between accounts, but in-between the two accounts we are adding a smart-contract that contains an escrow.
 
 ## Practical smart-contract coding - "contract" for sale
 
@@ -45,7 +45,7 @@ However, as this area continues to develop these functions may be written into f
 
 ### _What is the point of such an incomplete agreement?_
 
-Well, although it is in a legal sense largely incomplete, this "contract" is arguably a workable basis for a decentralised, trustless, and disintermediated transaction between two arms-length individuals, something that has been, until now, impossible to carry out in the world of ecommerce. There are no banks, payment services or online markets involved. This is a new kind of transaction for an economy adapted to the internet.
+Well, although it is in a legal sense largely incomplete, this "contract" is arguably a workable basis for a decentralised, trustless, and disintermediated transaction between two arms-length individuals, something that has been, until now, impossible to carry out in the world of e-commerce. There are no banks, payment services or online markets involved. This is a new kind of transaction for an economy adapted to the internet.
 
 Regardless of whether we want to get into the minutae of the traditional sales contract, and include everything to make this smart-contract complete and enforceable from a legal standpoint, we need to start at the beginning, with the functions that will facilitate the nuts and bolts of the transaction. Not only will it give us an understanding of the kind of things that are possible, but the instrumental foundations of the transaction itself is the only place from which we can encode, adapt, or discard these contractual legal requirements.
 
@@ -63,7 +63,7 @@ Internet commerce greatly expanded the amount of people that we could deal with 
 
 ![internet](/assets/internet.png)
 
-In contrast a _decentralised_ transaction has no such entity to either insuring or incentivising the parties to execute the transaction properly. The two most obvious dangers could be that the seller takes the buyer's cash and does not send the item, or the buyer says that the item did not arrive when it actually did arrive and but never-the-less demands a refund. Therefore, outside of a larger context for the transaction and external incentives, decentralised transactions require their own internal incentives for parties to uphold their part of the bargain. The most obvious way of doing this is to use money (in this case "Ether") as a security deposit:
+In contrast a _decentralised_ transaction has no such entity to either insuring or incentivising the parties to execute the transaction properly. The two most obvious dangers could be that the seller takes the buyer's cash and does not send the item, or the buyer says that the item did not arrive when in fact it did arrive but they never-the-less demand a refund from the seller. Therefore, outside of a larger context for the transaction and external incentives, decentralised transactions require their own internal incentives for parties to uphold their part of the bargain. The most obvious way of doing this is to use money (in this case "Ether") as a security deposit:
 
 ![decentralised](/assets/decentralised.png)
 
@@ -117,7 +117,7 @@ Click on DEPLOY NEW CONTRACT:
 
 ![deploy](/assets/deploy.png)
 
-Here we see a snippet of the Ethereum scripting language "Solidity" for the first time. This is where we write the code that we want to put on the blockchain, above is the address of the wallet you wish to send the contract from (this will be the contract "owner", but a better term could be "originator" or "creator"). Just below that is where you can put Ether when you create the contract.
+Here we see a snippet of the Ethereum scripting language "Solidity" for the first time. The "Solidity source code" window is where we write the code that we want to put on the blockchain. Above that are two fields, "amount" and "from", these are very important when writing smart-contract code from your wallet to the blockchain. In putting a contract onto the blockchain, you are essentially sending a message to the blockchain from an Ethereum address. You can have many addresses in your wallet, the "from" field here is the address of the wallet you wish to send the contract _from_ (this will be the contract "owner", but a better term could be "originator" or "creator"). The same message that we send from this address to the blockchain can also carry with it an amount of Ether, we set this amount of ether in the "amount" field.
 
 Now lets go back to the previous screen - CONTRACTS:
 
@@ -174,7 +174,7 @@ We will add a function like this just underneath the variable definitions:
 
 The variables that we made in lines 3, 4 and 5 earlier, were empty. The **Purchase()** function gives two of them values. There is something unusual about this function that will not be the same for the other functions we will write. This function will only run when the contract is first loaded onto the blockchain and it will not appear in the drop down menu of available functions when we are viewing the contract in the Ethereum wallet. Functions like this are called "constructors" and the only way to create a constructor function is to give it the exact same name as the actual contract ("Purchase").
 
-When the Purchase contract is created (contracts are created through a "message" from the creator of the contract to the Ethereum blockchain), **Purchase()** will run and the variable "seller" will be given the value of the address of the account creating the contract (the "sender" of the "message", or in Solidity - the "msg.sender"). Similarly, the "message" creating the contract has a "value" of Ether, because the seller when putting up the item for sale will put 2x the purchase price into the contract when creating it. Hence, the "value" variable (the sale price) will be the value included with the message divided by 2, or "msg.value / 2".
+When the Purchase contract is created (contracts are created through a "message" from the creator of the contract to the Ethereum blockchain), **Purchase()** will run and the variable "seller" will be set to the address of the account creating the contract (the "sender" of the "message", or in Solidity - the "msg.sender"). Similarly, the "message" creating the contract has a "value" of Ether, because the seller when putting up the item for sale will put 2x the purchase price into the contract when creating it. Hence, the "value" variable (the sale price) will be the value included with the message divided by 2, or "msg.value / 2".
 
 _For the more programming minded, you will notice that this syntax is similar to dot notation, the main object is the "msg", and the "sender" and "value" are attributes of that object._
 
@@ -216,7 +216,7 @@ Now we have a working contract.... sort of.
 
 ### Some problems...
 
-Our contract works, if both parties are pure of heart. Although it has some big drawbacks that you might have noticed, add the contract to the Ethereum wallet, buy going to DEPOY NEW CONTRACT, select the account you want to use, send a value of 2 ether, remove the text that is in the solidity contract source code box and cut and past what you have been working on in browser-solidity:
+Our contract works, if both parties are pure of heart. Although it has some big problems that you may have already noticed, add the contract to the Ethereum wallet, by going to DEPOY NEW CONTRACT, select the account you want to use, send a value of 2 ether, remove the text that is in the solidity contract source code box and cut and past what you have been working on in browser-solidity:
 
 ![deployone](/assets/deployone.png)
 
