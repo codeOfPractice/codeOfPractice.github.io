@@ -254,7 +254,7 @@ You will see that you cannot run certain functions without using the correct add
 
 ***
 
-## Problem: Functions are allowed to run at the wrong time
+## Problem - Functions are allowed to run at the wrong time
 
 There is another problem, even though the right functions can only be run by the right people, functions can still be run at the wrong time.
 
